@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dusk Light | AIコンサルティング & デジタルマーケティング</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #4f46e5;
+            --accent-color: #ec4899;
+            --dark-bg: #1a1a1a;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --light-text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: #fafafa;
+        }
+
+        .header {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg), #2a2a2a);
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            color: var(--light-text);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #e5e5e5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .services {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-bg);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-bg);
+        }
+
+        .pricing {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8f8f8, #ffffff);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--dark-bg);
+            margin-bottom: 2rem;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .price-features li {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .contact {
+            background: var(--dark-bg);
+            padding: 6rem 2rem;
+            text-align: center;
+            color: var(--light-text);
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            background: #000000;
+            color: var(--light-text);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-logo">Dusk Light</div>
+            <div class="nav-links">
+                <a href="#services">サービス</a>
+                <a href="#pricing">料金プラン</a>
+                <a href="#contact">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>未来を創るAIソリューション</h1>
+            <p>AIコンサルティング、SNS運用、Webマーケティングで、あなたのビジネスを次のステージへ</p>
+            <a href="#contact" class="btn">無料相談はこちら</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="section-title">
+            <h2>サービス内容</h2>
+            <p>最新のテクノロジーと戦略で、ビジネスの成長をサポートします</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-robot"></i>
+                <h3>AIコンサルティング</h3>
+                <p>最新のAI技術を活用し、業務効率化やビジネス成長のための戦略を提案。ChatGPT等の導入支援から運用アドバイスまで、包括的なサポートを提供します。</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hashtag"></i>
+                <h3>SNS運用支援</h3>
+                <p>Instagram、Twitter、FacebookなどのSNSアカウント運用を最適化。エンゲージメント向上から売上アップまで、戦略的なSNSマーケティングを実現します。</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Webマーケティング</h3>
+                <p>SEO対策、リスティング広告、コンテンツマーケティングなど、包括的なWebマーケティング戦略を構築。データ分析に基づく効果的なアプローチを提供します。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="section-title">
+            <h2>料金プラン</h2>
+            <p>ビジネスの規模や目的に合わせて、最適なプランをお選びいただけます</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card" style="background: linear-gradient(145deg, #f8f9fa, #e9ecef);">
+                <h3>学生応援プラン</h3>
+                <div class="price">¥5,000</div>
+                <ul class="price-features">
+                    <li>AI活用による就活支援</li>
+                    <li>就活用SNSプロフィール最適化</li>
+                    <li>エントリーシート添削（AI活用）</li>
+                    <li>月1回のキャリア相談</li>
+                    <li>学割適用で50%オフ</li>
+                </ul>
+                <p style="font-size: 0.9rem; color: #666; margin: 1rem 0;">※学生証の提示が必要です</p>
+                <a href="#contact" class="btn">お問い合わせ</a>
+            </div>
+            <div class="price-card">
+                <h3>スタータープラン</h3>
+                <div class="price">¥10,000</div>
+                <ul class="price-features">
+                    <li>基本的なAIコンサルティング</li>
+                    <li>SNS運用基礎診断</li>
+                    <li>マーケティング戦略の初期設計</li>
+                    <li>月1回のオンラインミーティング</li>
+                </ul>
+                <a href="#contact" class="btn">お問い合わせ</a>
+            </div>
+            <div class="price-card">
+                <h3>ビジネスプラン</h3>
+                <div class="price">¥50,000</div>
+                <ul class="price-features">
+                    <li>詳細なAI導入コンサルティング</li>
+                    <li>SNS運用代行（2プラットフォーム）</li>
+                    <li>Webマーケティング施策の実施</li>
+                    <li>週1回のフォローアップ</li>
+                    <li>月次レポート提出</li>
+                </ul>
+                <a href="#contact" class="btn">お問い合わせ</a>
+            </div>
+            <div class="price-card">
+                <h3>エンタープライズプラン</h3>
+                <div class="price">¥150,000</div>
+                <ul class="price-features">
+                    <li>包括的なAIソリューション開発</li>
+                    <li>SNS運用完全代行（全プラットフォーム）</li>
+                    <li>カスタマイズされたマーケティング戦略</li>
+                    <li>24時間サポート体制</li>
+                    <li>専任マネージャーの配置</li>
+                    <li>詳細な分析レポート（週次・月次）</li>
+                </ul>
+                <a href="#contact" class="btn">お問い合わせ</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>お問い合わせ</h2>
+        <p>サービスに関するご質問やご相談は、お気軽にお問い合わせください。</p>
+        <div style="margin: 2rem 0;">
+            <p>合同会社 Dusk Light</p>
+            <p>〒836-0046</p>
+            <p>福岡県大牟田市本町一丁目4-6</p>
+            <p style="margin-top: 1rem;">
+                <i class="fas fa-phone"></i> <a href="tel:090-2858-0551" style="color: white; text-decoration: none;">090-2858-0551</a>
+            </p>
+            <p>
+                <i class="fas fa-envelope"></i> <a href="mailto:dusklight.llc@gmail.com" style="color: white; text-decoration: none;">dusklight.llc@gmail.com</a>
+            </p>
+        </div>
+        <a href="mailto:dusklight.llc@gmail.com" class="btn">メールでのお問い合わせ</a>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Dusk Light. All rights reserved.</p>
+    </footer>
+</body>
+</html>
