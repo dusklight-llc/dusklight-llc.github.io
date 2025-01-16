@@ -1,9 +1,3 @@
-AIビジネスホームページ
-
-プレビュー
-
-コード
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -244,6 +238,17 @@ AIビジネスホームページ
             text-align: center;
         }
 
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -255,6 +260,11 @@ AIビジネスホームページ
 
             .pricing-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
             }
         }
     </style>
@@ -364,18 +374,53 @@ AIビジネスホームページ
     <section id="contact" class="contact">
         <h2>お問い合わせ</h2>
         <p>サービスに関するご質問やご相談は、お気軽にお問い合わせください。</p>
-        <div style="margin: 2rem 0;">
-            <p>合同会社 Dusk Light</p>
-            <p>〒836-0046</p>
-            <p>福岡県大牟田市本町一丁目4-6</p>
-            <p style="margin-top: 1rem;">
-                <i class="fas fa-phone"></i> <a href="tel:090-2858-0551" style="color: white; text-decoration: none;">090-2858-0551</a>
-            </p>
-            <p>
-                <i class="fas fa-envelope"></i> <a href="mailto:dusklight.llc@gmail.com" style="color: white; text-decoration: none;">dusklight.llc@gmail.com</a>
-            </p>
+        
+        <div class="contact-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+            <!-- 会社情報 -->
+            <div class="company-info" style="text-align: left;">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">会社情報</h3>
+                <p>合同会社 Dusk Light</p>
+                <p>〒836-0046</p>
+                <p>福岡県大牟田市本町一丁目4-6</p>
+                <p style="margin-top: 1rem;">
+                    <i class="fas fa-phone"></i> <a href="tel:090-2858-0551" style="color: white; text-decoration: none;">090-2858-0551</a>
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i> <a href="mailto:dusklight.llc@gmail.com" style="color: white; text-decoration: none;">dusklight.llc@gmail.com</a>
+                </p>
+            </div>
+
+            <!-- お問い合わせフォーム -->
+            <div class="contact-form">
+                <form action="https://formspree.io/f/dusklight.llc@gmail.com" method="POST" style="text-align: left;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; margin-bottom: 0.5rem;">お名前 *</label>
+                        <input type="text" id="name" name="name" required
+                            style="width: 100%; padding: 0.75rem; border-radius: 8px; border: none; background: rgba(255,255,255,0.1); color: white;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; margin-bottom: 0.5rem;">メールアドレス *</label>
+                        <input type="email" id="email" name="email" required
+                            style="width: 100%; padding: 0.75rem; border-radius: 8px; border: none; background: rgba(255,255,255,0.1); color: white;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="subject" style="display: block; margin-bottom: 0.5rem;">件名</label>
+                        <input type="text" id="subject" name="subject"
+                            style="width: 100%; padding: 0.75rem; border-radius: 8px; border: none; background: rgba(255,255,255,0.1); color: white;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="message" style="display: block; margin-bottom: 0.5rem;">メッセージ *</label>
+                        <textarea id="message" name="message" required rows="5"
+                            style="width: 100%; padding: 0.75rem; border-radius: 8px; border: none; background: rgba(255,255,255,0.1); color: white; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; cursor: pointer;">送信する</button>
+                </form>
+            </div>
         </div>
-        <a href="mailto:dusklight.llc@gmail.com" class="btn">メールでのお問い合わせ</a>
     </section>
 
     <footer class="footer">
